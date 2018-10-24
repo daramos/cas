@@ -174,7 +174,6 @@ test {
 tasks.withType(Test) {
     exclude "**/Abstract*.*", "**/Base*.*", "**/*Suite.*"
     include "**/*Tests.*"
-    includeEngines 'junit-jupiter'
     scanForTestClasses = false
     ignoreFailures = Boolean.getBoolean("ignoreTestFailures")
     maxParallelForks = 4
@@ -187,6 +186,9 @@ tasks.withType(Test) {
         showStandardStreams = Boolean.getBoolean("showStandardStreams")
         showExceptions = true
         showCauses = true
+    }
+    useJUnitPlatform {
+        includeEngines 'junit-jupiter'
     }
 }
 
