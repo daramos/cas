@@ -34,10 +34,9 @@ task testCouchbase(type: Test) {
 }
 
 task testCouchDb(type: Test) {
-    enabled = hasTestsOfCategory(project.sourceSets.test.java.srcDirs, "CouchDb") && "COUCHDB".equalsIgnoreCase(rootProject.testCategoryType)
+    enabled = shouldTest(project.sourceSets.test.java.srcDirs, "couchdb")
     useJUnitPlatform {
-        includeTags rootProject.ext.couchdb
-        includeEngines 'junit-jupiter'
+        includeTags "couchdb"
     }
 }
 
@@ -175,7 +174,7 @@ test {
 tasks.withType(Test) {
     exclude "**/Abstract*.*", "**/Base*.*", "**/*Suite.*"
     include "**/*Tests.*"
-    enabled = enabled && !Boolean.getBoolean("skipTests")
+    includeEngines 'junit-jupiter'
     scanForTestClasses = false
     ignoreFailures = Boolean.getBoolean("ignoreTestFailures")
     maxParallelForks = 4
