@@ -4,12 +4,9 @@ import org.apereo.cas.authentication.AuthenticationHandler;
 import org.apereo.cas.authentication.CoreAuthenticationTestUtils;
 import org.apereo.cas.category.RadiusCategory;
 import org.apereo.cas.config.RadiusConfiguration;
-import org.apereo.cas.util.junit.ConditionalIgnore;
-import org.apereo.cas.util.junit.ConditionalIgnoreRule;
-import org.apereo.cas.util.junit.RunningContinuousIntegrationCondition;
+import org.apereo.cas.util.junit.EnabledIfContinuousIntegration;
 
 import lombok.val;
-import org.junit.Rule;
 import org.junit.experimental.categories.Category;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -35,12 +32,9 @@ import static org.junit.Assert.*;
     "cas.authn.radius.client.inetAddress=localhost"
 })
 @Category(RadiusCategory.class)
-@ConditionalIgnore(condition = RunningContinuousIntegrationCondition.class)
+@EnabledIfContinuousIntegration
 @ExtendWith(SpringExtension.class)
 public class RadiusAuthenticationHandlerTests {
-    @Rule
-    public final ConditionalIgnoreRule conditionalIgnoreRule = new ConditionalIgnoreRule();
-    
     @Autowired
     @Qualifier("radiusAuthenticationHandler")
     private AuthenticationHandler radiusAuthenticationHandler;
