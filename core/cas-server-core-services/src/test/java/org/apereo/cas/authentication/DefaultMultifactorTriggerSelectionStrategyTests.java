@@ -20,7 +20,7 @@ import static org.apereo.cas.authentication.CoreAuthenticationTestUtils.getAuthe
 import static org.apereo.cas.authentication.CoreAuthenticationTestUtils.mockPrincipal;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
-import static org.junit.Assert.*;
+import static org.hamcrest.MatcherAssert.*;
 import static org.mockito.Mockito.*;
 
 /**
